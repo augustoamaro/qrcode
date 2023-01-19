@@ -59,6 +59,7 @@ img {
 @media (min-width: 1440px) {
     .container {
       display: flex;
-      justify-content: center;
+      padding-top: 157px;
+      /* justify-content: center; */
     }
   }
