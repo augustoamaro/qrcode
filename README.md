@@ -1,7 +1,7 @@
 # Frontend Mentor - QR code component
 
 ![Desktop](./design/qrcode_desktop.jpg)
-![Mobile](./design/qrcode_desktop.jpg)
+![Mobile](./design/qrcode_mobile.jpg)
 
 ## Welcome! 👋
 
