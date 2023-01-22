@@ -61,7 +61,7 @@ p {
 @media (min-width: 1440px) {
     .container {
       display: flex;
-      padding-top: 157px;
+      padding-top: 152 px;
       /* justify-content: center; */
     }
   }
