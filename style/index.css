@@ -3,15 +3,17 @@
 * {
     margin: 0;
     padding: 0;
-    height: 100%;
     box-sizing: border-box;   
+}
+
+body {
+    background: hsl(212, 45%, 89%);
 }
 
 main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: hsl(212, 45%, 89%);
     padding-top: 85px;
 }
 
@@ -21,7 +23,6 @@ main {
     justify-content: center;
     align-items: center;
     width: 320px;
-    height: 497px;
     background-color: hsl(0, 0%, 100%);
     border-radius: 20px;
     padding-top: 16px;
@@ -55,13 +56,11 @@ p {
     text-align: center;
     letter-spacing: 0.1875px;
     color: #7D889E;
-    padding: 0 32px 0 32px;
+    padding: 16px 32px 40px 32px;
 }
 
 @media (min-width: 1440px) {
-    .container {
-      display: flex;
-      padding-top: 152 px;
-      /* justify-content: center; */
+    main {
+      padding-top: 152px;
     }
-  }
+}
