@@ -40,7 +40,6 @@
   });
 </script>
 
-
 <body>
 
   <main class="container">
@@ -53,30 +52,6 @@
   </main>
 
   <div id="contador-visitantes"></div>
-
-  <script>
-    gapi.analytics.ready(function () {
-      // Replace with your Google Analytics property ID
-      var GA_MEASUREMENT_ID = 'G-HTKQ38Q27R';
-
-      // Retrieve the number of current visitors in real-time using Google Analytics Reporting API v4
-      var activeUsers = new gapi.analytics.ext.ActiveUsers({
-        'query': {
-          'ids': 'ga:' + GA_MEASUREMENT_ID,
-        }
-      });
-
-      // Update the visitor count every 5 seconds
-      setInterval(function () {
-        var visitors = activeUsers.get('activeUsers');
-        document.getElementById('contador-visitantes').innerHTML = visitors;
-      }, 5000);
-
-      activeUsers.execute();
-    });
-  </script>
-
-
 
 
   <!-- <script>
