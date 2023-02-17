@@ -38,30 +38,33 @@
     </div>
   </main>
 
-  <!-- <div id="total-visitors"></div>
+  <div id="contador"></div>
   <script>
-    gtag('config', 'G-HTKQ38Q27R', { 'send_page_view': false });
+    // Definir ID de acompanhamento do Google Analytics
+    const GA_MEU_ID = 'G-HTKQ38Q27R';
 
-    gtag('event', 'total_visitors', {
-      'event_category': 'engagement',
-      'event_label': 'total_visitors',
+    // Definir função para atualizar o contador
+    function atualizarContador() {
+      const pageviews = window.localStorage.getItem('pageviews');
+      const contadorHTML = pageviews ? `<p>Esta página foi visualizada ${pageviews} vezes.</p>` : '';
+      document.getElementById('contador').innerHTML = contadorHTML;
+    }
+
+    // Enviar evento de page_view para o Google Analytics
+    gtag('event', 'page_view', {
+      'send_to': GA_MEU_ID,
       'event_callback': function () {
-        var metrics = gtag('get', 'GA4_METRICS');
-        var totalVisitors;
-        for (var i = 0; i < metrics.length; i++) {
-          if (metrics[i].name === 'active_users') {
-            totalVisitors = metrics[i].values[0];
-            break;
-          }
+        // Atualizar o contador quando o evento for concluído
+        let pageviews = window.localStorage.getItem('pageviews');
+        if (!pageviews) {
+          pageviews = 0;
         }
-        document.getElementById('total-visitors').innerHTML = 'Total de visitantes: ' + totalVisitors;
+        pageviews++;
+        window.localStorage.setItem('pageviews', pageviews);
+        atualizarContador();
       }
     });
-  </script> -->
-  <div align=center><a href='https://contador.s12.com.br'><img
-        src='https://contador.s12.com.br/img-C7A1ada2bC74Y3W7-15.gif' border='0' alt='contador de visitantes'></a>
-    <script type='text/javascript' src='https://contador.s12.com.br/ad.js?id=C7A1ada2bC74Y3W7'></script>
-  </div>
+  </script>
 </body>
 
 </html>
