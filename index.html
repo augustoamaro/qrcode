@@ -46,7 +46,14 @@
       'event_category': 'engagement',
       'event_label': 'total_visitors',
       'event_callback': function () {
-        var totalVisitors = gtag('get', 'GA4_METRICS').find(x => x.name === 'active_users').values[0];
+        var metrics = gtag('get', 'GA4_METRICS');
+        var totalVisitors;
+        for (var i = 0; i < metrics.length; i++) {
+          if (metrics[i].name === 'active_users') {
+            totalVisitors = metrics[i].values[0];
+            break;
+          }
+        }
         document.getElementById('total-visitors').innerHTML = 'Total de visitantes: ' + totalVisitors;
       }
     });
