@@ -39,30 +39,18 @@
   </main>
 
   <div id="contador-usuarios-atuais"></div>
-  <!-- <script>
-    // Define a função para atualizar o contador de usuários atuais
-    function atualizarContadorUsuariosAtuais() {
-      // Consulta o número de usuários atuais do seu site
-      gtag('event', 'query', {
-        'event_category': 'Contador de usuários atuais',
-        'event_label': 'Número de usuários atuais',
-        'dimensions': 'rt:pageTitle',
-        'metrics': 'rt:activeUsers',
-        'max-results': 1,
-        'event_callback': function (response) {
-          // Extrai o número de usuários atuais da resposta
-          const activeUsers = response.totalsForAllResults['rt:activeUsers'];
+  <script>
+    gtag('config', 'G-HTKQ38Q27R', { 'send_page_view': false });
 
-          // Define o HTML da div onde você deseja exibir o contador
-          const contadorDiv = document.getElementById('contador-usuarios-atuais');
-          contadorDiv.innerHTML = `Atualmente, ${activeUsers} usuários estão visitando nosso site.`;
-        }
-      });
-    }
-
-    // Atualize o contador de usuários atuais a cada 5 segundos
-    setInterval(atualizarContadorUsuariosAtuais, 5000);
-  </script> -->
+    gtag('event', 'total_visitors', {
+      'event_category': 'engagement',
+      'event_label': 'total_visitors',
+      'event_callback': function () {
+        var totalVisitors = ga.getAll()[0].get('metric1');
+        document.getElementById('total-visitors').innerHTML = 'Total de visitantes: ' + totalVisitors;
+      }
+    });
+  </script>
 </body>
 
 </html>
