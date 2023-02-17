@@ -23,12 +23,7 @@
   gtag('js', new Date());
 
   gtag('config', 'G-HTKQ38Q27R');
-  gtag('event', 'page_view', {
-    'send_to': 'G-HTKQ38Q27R',
-    'event_callback': function () {
-      document.getElementById('page_view').innerHTML = 'Visualização de página registrada!';
-    }
-  });
+
 </script>
 
 
@@ -44,6 +39,14 @@
   </main>
 
   <div id="page_view"></div>
+  <script>
+    gtag('event', 'page_view', {
+      'send_to': 'GG-HTKQ38Q27R',
+      'event_callback': function () {
+        document.getElementById('page_view').innerHTML = 'Visualização de página registrada!';
+      }
+    });
+  </script>
 </body>
 
 </html>
