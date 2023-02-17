@@ -40,28 +40,31 @@
 
   <div id="contador"></div>
   <script>
-    // Definir ID de acompanhamento do Google Analytics
+    // Defina o seu ID de acompanhamento do Google Analytics
     const GA_MEU_ID = 'G-HTKQ38Q27R';
 
-    // Definir função para atualizar o contador
-    function atualizarContador() {
-      const pageviews = window.localStorage.getItem('pageviews');
-      const contadorHTML = pageviews ? `<p>Esta página foi visualizada ${pageviews} vezes.</p>` : '';
-      document.getElementById('contador').innerHTML = contadorHTML;
-    }
-
-    // Enviar evento de page_view para o Google Analytics
-    gtag('event', 'page_view', {
+    // Consulta o número de visualizações de página por título da página
+    gtag('event', 'query', {
+      'event_category': 'Contador de visualizações',
+      'event_label': 'Visualizações por Título da Página',
       'send_to': GA_MEU_ID,
-      'event_callback': function () {
-        // Atualizar o contador quando o evento for concluído
-        let pageviews = window.localStorage.getItem('pageviews');
-        if (!pageviews) {
-          pageviews = 0;
-        }
-        pageviews++;
-        window.localStorage.setItem('pageviews', pageviews);
-        atualizarContador();
+      'dimensions': 'ga:pageTitle',
+      'metrics': 'ga:pageviews',
+      'sort': '-ga:pageviews',
+      'max-results': 10,
+      'event_callback': function (response) {
+        // Cria uma string HTML com a contagem de visualizações por título de página
+        let html = '<ul>';
+        response.rows.forEach(function (row) {
+          const pageTitle = row[0];
+          const pageviews = row[1];
+          html += `<li>${pageTitle}: ${pageviews} visualizações</li>`;
+        });
+        html += '</ul>';
+
+        // Define o HTML da div onde você deseja exibir o contador
+        const contadorDiv = document.getElementById('contador');
+        contadorDiv.innerHTML = html;
       }
     });
   </script>
