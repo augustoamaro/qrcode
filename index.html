@@ -40,10 +40,28 @@
 
   <div id="page_view"></div>
   <script>
+    // Definir ID de acompanhamento do Google Analytics
+    const GA_MEU_ID = 'G-HTKQ38Q27R';
+
+    // Definir função para atualizar o contador
+    function atualizarContador() {
+      const pageviews = window.localStorage.getItem('pageviews');
+      const contadorHTML = pageviews ? `<p>Esta página foi visualizada ${pageviews} vezes.</p>` : '';
+      document.getElementById('contador').innerHTML = contadorHTML;
+    }
+
+    // Enviar evento de page_view para o Google Analytics
     gtag('event', 'page_view', {
-      'send_to': 'GG-HTKQ38Q27R',
+      'send_to': GA_MEU_ID,
       'event_callback': function () {
-        document.getElementById('page_view').innerHTML = 'Visualização de página registrada!';
+        // Atualizar o contador quando o evento for concluído
+        let pageviews = window.localStorage.getItem('pageviews');
+        if (!pageviews) {
+          pageviews = 0;
+        }
+        pageviews++;
+        window.localStorage.setItem('pageviews', pageviews);
+        atualizarContador();
       }
     });
   </script>
