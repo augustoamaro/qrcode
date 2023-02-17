@@ -39,18 +39,7 @@
   </main>
 
   <div id="contador"></div>
-  <script>
-    gtag('config', 'G-HTKQ38Q27R', {
-      'send_page_view': true
-    });
-    var gaInterval = setInterval(function () {
-      var users = gtag.get('config', 'G-HTKQ38Q27R', { 'metric': 'users' });
-      if (users) {
-        document.getElementById('contador').innerHTML = users;
-        clearInterval(gaInterval);
-      }
-    }, 1000);
-  </script>
+
 
   <!-- <script>
     // Definir ID de acompanhamento do Google Analytics
